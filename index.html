@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASF Mala — Checklist Inteligente de Praia</title>
+<meta name="description" content="Checklist inteligente de praia gerado por tipo de sessão de surf. Satélite do app ASF.">
+<style>:root{--p:#00a8cc;--pd:#0e2439;--g:#f4d03f}*{box-sizing:border-box;margin:0}body{font-family:system-ui,sans-serif;background:#f6fbfd;color:var(--pd)}nav{background:var(--pd);padding:9px 12px;display:flex;flex-wrap:wrap;gap:6px}nav a{color:#fff;text-decoration:none;font-size:11px;font-weight:600;padding:4px 8px;border-radius:20px;background:rgba(255,255,255,.08)}nav a.hub{background:var(--g);color:var(--pd)}header{padding:32px 20px;text-align:center;background:linear-gradient(135deg,#e8772218,#00a8cc15)}h1{font-size:25px}main{max-width:520px;margin:20px auto;padding:0 16px}.modes{display:flex;gap:8px;margin-bottom:14px}.modes button{flex:1;background:#fff;border:2px solid #dde;border-radius:12px;padding:11px;font-weight:700;font-size:13px;cursor:pointer}.modes button.on{border-color:var(--p);background:#00a8cc12;color:var(--p)}.card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06)}label{display:flex;gap:10px;align-items:center;font-size:14.5px;padding:7px 0;cursor:pointer}input[type=checkbox]{accent-color:var(--p);width:18px;height:18px}label.ok{text-decoration:line-through;opacity:.5}.bar{height:10px;background:#eef4f6;border-radius:99px;overflow:hidden;margin-bottom:12px}.bar div{height:100%;background:linear-gradient(90deg,var(--g),var(--p));transition:width .3s}.muted{color:#678;font-size:13px}footer{text-align:center;padding:26px;font-size:12px;color:#678}</style>
+</head>
+<body>
+<nav>
+<a class="hub" href="https://acarolmourad-commits.github.io/asf-app/">🏄‍♀️ ASF App</a>
+<a href="https://acarolmourad-commits.github.io/asf-atlas/">🗺️</a><a href="https://acarolmourad-commits.github.io/asf-praias/">🏖️</a><a href="https://acarolmourad-commits.github.io/asf-previsao/">🌊</a><a href="https://acarolmourad-commits.github.io/asf-mare/">🌙</a><a href="https://acarolmourad-commits.github.io/asf-sos/">🆘</a><a href="https://acarolmourad-commits.github.io/asf-leitura/">👁️</a><a href="https://acarolmourad-commits.github.io/asf-treino/">💪</a><a href="https://acarolmourad-commits.github.io/asf-popup/">⏱️</a><a href="https://acarolmourad-commits.github.io/asf-desafio/">🗓️</a><a href="https://acarolmourad-commits.github.io/asf-eventos/">📅</a><a href="https://acarolmourad-commits.github.io/asf-glossario/">📖</a><a href="https://acarolmourad-commits.github.io/asf-memoria/">🧩</a><a href="https://acarolmourad-commits.github.io/asf-manobras/">🤸</a><a href="https://acarolmourad-commits.github.io/asf-comunidade/">💜</a><a href="https://acarolmourad-commits.github.io/asf-seguranca/">🛟</a><a href="https://acarolmourad-commits.github.io/asf-bemestar/">🧘</a><a href="https://acarolmourad-commits.github.io/asf-quiz/">🧠</a><a href="https://acarolmourad-commits.github.io/asf-equipamento/">🏄</a><a href="https://acarolmourad-commits.github.io/asf-nutricao/">🥑</a><a href="https://acarolmourad-commits.github.io/asf-viagens/">✈️</a><a href="https://acarolmourad-commits.github.io/asf-historia/">📜</a><a href="https://acarolmourad-commits.github.io/asf-diario/">📓</a><a href="https://acarolmourad-commits.github.io/asf-respira/">🫁</a><a href="https://acarolmourad-commits.github.io/asf-volume/">📐</a>
+</nav>
+<header><h1>🎒 ASF Mala</h1><p class="muted">Nunca mais esqueça o leash em casa — checklist por tipo de sessão</p></header>
+<main>
+<div class="modes">
+<button class="on" data-m="treino" onclick="pick(this)">🏄‍♀️ Treino rápido</button>
+<button data-m="dia" onclick="pick(this)">☀️ Dia todo</button>
+<button data-m="trip" onclick="pick(this)">✈️ Surf trip</button>
+</div>
+<div class="card">
+<div class="bar"><div id="bar" style="width:0%"></div></div>
+<div id="list"></div>
+<p class="muted" id="msg" style="margin-top:10px"></p>
+</div>
+<p class="muted" style="text-align:center;margin-top:14px">Escolha o pico no <a href="https://acarolmourad-commits.github.io/asf-atlas/">ASF Atlas</a> e veja a melhor janela no <a href="https://acarolmourad-commits.github.io/asf-mare/">ASF Maré</a>.</p>
+</main>
+<footer>Parte da constelação ASF • <a href="https://acarolmourad-commits.github.io/asf-app/">Voltar ao app principal</a></footer>
+<script>
+const BASE=['🏄‍♀️ Prancha','🪢 Leash','🧴 Protetor solar mineral','💧 Garrafa de água','🔑 Esconderijo da chave','👙 Roupa de banho'];
+const EXTRA={treino:['🍌 Banana (energia rápida)','🧴 Cera','⏱️ 5 min de <a href="https://acarolmourad-commits.github.io/asf-popup/">pop-ups</a> de aquecimento'],
+dia:['🧴 Cera + cera extra','🩱 Wetsuit/licra UV','🥪 Lanche e água de coco','🧢 Boné e óculos','🩹 Kit mini primeiros socorros','📱 <a href="https://acarolmourad-commits.github.io/asf-sos/">ASF SOS</a> salvo nos favoritos'],
+trip:['🩱 Wetsuit 3/2mm','🔧 Kit reparo de prancha','🪪 Documentos + dinheiro','💊 Farmacinha (cãibra, ouvido)','📓 <a href="https://acarolmourad-commits.github.io/asf-diario/">Diário</a> de viagem','🗺️ Roteiro do <a href="https://acarolmourad-commits.github.io/asf-viagens/">ASF Viagens</a>','🔌 Carregador e power bank']};
+let mode='treino',done=new Set();
+function pick(b){document.querySelectorAll('.modes button').forEach(x=>x.classList.remove('on'));b.classList.add('on');mode=b.dataset.m;done=new Set();render()}
+function render(){
+ const items=[...BASE,...EXTRA[mode]];const l=document.getElementById('list');l.innerHTML='';
+ items.forEach((t,i)=>{const lb=document.createElement('label');if(done.has(i))lb.className='ok';lb.innerHTML='<input type="checkbox" '+(done.has(i)?'checked':'')+'> '+t;lb.querySelector('input').onchange=e=>{e.target.checked?done.add(i):done.delete(i);render()};l.appendChild(lb)});
+ const p=Math.round(done.size/items.length*100);document.getElementById('bar').style.width=p+'%';
+ document.getElementById('msg').textContent=p===100?'✅ Mala pronta! Boa sessão, mana! 🌊':done.size+'/'+items.length+' itens na mochila';
+}
+render();
+</script>
+</body>
+</html>
