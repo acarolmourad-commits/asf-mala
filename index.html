@@ -1,1 +1,50 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ASF Mala — Checklist inteligente de praia | ASF</title><meta name="description" content="Monte a mala de praia perfeita: checklist gerado por tipo de sessão (surf, treino, competição). Satélite do app ASF."><link rel="canonical" href="https://acarolmourad-commits.github.io/asf-mala/"><meta name="theme-color" content="#00A8CC"><style>:root{--p:#00A8CC;--d:#0E2439;--u:#9B59B6;--bg:#F7FBFC;--g:#5A6B7A}*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--d)}nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #E5EEF2;padding:10px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}nav a{color:var(--p);text-decoration:none;font-weight:700;font-size:13px}nav a.on{color:var(--u)}header{background:linear-gradient(135deg,var(--p),var(--u));color:#fff;padding:40px 20px 30px;text-align:center}.wrap{max-width:640px;margin:0 auto;padding:24px 16px 60px}.tipos{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tipos button{border:2px solid var(--p);background:#fff;color:var(--p);font-weight:700;padding:8px 14px;border-radius:999px;cursor:pointer}.tipos button.on{background:var(--p);color:#fff}.card{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:10px;box-shadow:0 2px 8px rgba(14,36,57,.06)}label{display:flex;gap:10px;padding:5px 0;font-size:14.5px;cursor:pointer}input{accent-color:var(--p)}.muted{color:var(--g);font-size:12.5px}footer{text-align:center;font-size:12.5px;color:var(--g);padding:24px;border-top:1px solid #E5EEF2}</style></head><body><nav><a href="https://acarolmourad-commits.github.io/asf-app/">🏄 App</a><a class="on" href="https://acarolmourad-commits.github.io/asf-mala/">🎒 Mala</a><a href="https://acarolmourad-commits.github.io/asf-checklist/">✅ Checklist</a><a href="https://acarolmourad-commits.github.io/asf-equipamento/">🏂 Equipamento</a><a href="https://acarolmourad-commits.github.io/asf-previsao/">🌊 Previsão</a></nav><header><h1>🎒 Mala de praia inteligente</h1><p>Escolha o tipo de sessão e receba a checklist perfeita.</p></header><main class="wrap"><div class="tipos"><button class="on" data-t="surf">Surf</button><button data-t="treino">Treino</button><button data-t="comp">Competição</button><button data-t="kids">Com as kids</button></div><div class="card"><div class="muted"><span id="pct">0</span>% pronto</div><div id="lista"></div></div><p class="muted">Confira as condições no <a href="https://acarolmourad-commits.github.io/asf-previsao/" style="color:var(--p)">ASF Previsão</a> antes de fechar a mala.</p></main><footer>🌊 ASF · <a href="https://acarolmourad-commits.github.io/" style="color:var(--p)">Hub de apps</a></footer><script>const base=['Prancha + leash','Protetor solar FPS 50+','Água (1L+)','Toalha','Lycra/wetsuit','Chave (esconder bem!)'];const extra={surf:['Parafina','Lanche pós-surf','Boné'],treino:['Elástico de resistência','Cronômetro no celular','Tênis para corrida na areia'],comp:['Carteirinha ASF','Prancha reserva','Barraca/sombra','Kit primeiros socorros'],kids:['Pranchinha de espuma','Colete/flutuador','Lanche extra','Muda de roupa','Brinquedos de areia']};const lista=document.getElementById('lista');function render(t){const itens=base.concat(extra[t]);lista.innerHTML='';itens.forEach(i=>lista.insertAdjacentHTML('beforeend',`<label><input type="checkbox"> ${i}</label>`));att();}function att(){const b=lista.querySelectorAll('input');let n=0;b.forEach(c=>c.checked&&n++);document.getElementById('pct').textContent=Math.round(n/b.length*100);}document.querySelectorAll('.tipos button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tipos button').forEach(x=>x.classList.remove('on'));b.classList.add('on');render(b.dataset.t);});lista.onchange=att;render('surf');</script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASF Mala — ASF</title>
+<meta name="description" content="Checklist inteligente de praia gerado por tipo de sessão">
+<style>
+:root{--rosa:#ff4d8d;--roxo:#7b2ff7;--areia:#fff5ec;--mar:#00c2cb}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+body{background:linear-gradient(160deg,#fff5ec,#ffe3f1 60%,#e0f7fa);min-height:100vh;color:#333}
+header{background:linear-gradient(90deg,var(--rosa),var(--roxo));color:#fff;padding:2rem 1rem;text-align:center}
+header h1{font-size:2rem} header p{opacity:.9;margin-top:.4rem}
+nav{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;padding:.8rem;background:#fff;box-shadow:0 2px 8px #0001;position:sticky;top:0;z-index:10}
+nav a{background:var(--areia);border:1px solid #ffd3e6;color:#c2185b;padding:.3rem .7rem;border-radius:20px;font-size:.78rem;text-decoration:none}
+main{max-width:760px;margin:1.5rem auto;padding:0 1rem}
+.card{background:#fff;border-radius:16px;padding:1.4rem;box-shadow:0 4px 16px #7b2ff720;margin-bottom:1.2rem}
+.card h2{color:var(--roxo);margin-bottom:.6rem;font-size:1.2rem}
+button{background:linear-gradient(90deg,var(--rosa),var(--roxo));color:#fff;border:none;padding:.6rem 1.2rem;border-radius:24px;font-size:1rem;cursor:pointer;margin:.2rem 0}
+input,select,textarea{padding:.5rem;border:1px solid #ddd;border-radius:10px;width:100%;margin:.3rem 0;font-size:1rem}
+.xp{position:fixed;bottom:1rem;right:1rem;background:#fff;border:2px solid var(--rosa);border-radius:24px;padding:.4rem 1rem;font-weight:bold;color:var(--roxo);box-shadow:0 4px 12px #0002}
+footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
+</style>
+</head>
+<body>
+<header><h1>🎒 ASF Mala</h1><p>Checklist inteligente de praia gerado por tipo de sessão</p></header>
+<nav><a href="https://acarolmourad-commits.github.io/">🌐 Hub ASF</a>
+<a href="https://acarolmourad-commits.github.io/asf-app/">🏄‍♀️ ASF App</a>
+<a href="https://acarolmourad-commits.github.io/asf-ranking/">🏆 Ranking</a>
+<a href="https://acarolmourad-commits.github.io/asf-viagens/">Viagens</a>
+<a href="https://acarolmourad-commits.github.io/asf-equipamento/">Equipamento</a>
+<a href="https://acarolmourad-commits.github.io/asf-seguranca/">Segurança</a></nav>
+<main>
+<div class="card"><h2>Monte sua mala perfeita</h2>
+<label>Tipo de sessão</label><select id="t"><option value="treino">Treino de surf</option><option value="free">Free surf</option><option value="campeonato">Campeonato</option><option value="trip">Surf trip</option></select>
+<label>Duração</label><select id="d"><option value="2h">2 horas</option><option value="dia">Dia inteiro</option><option value="fds">Fim de semana</option></select>
+<button onclick="gerar()">Gerar checklist ✨</button></div>
+<div class="card" id="out" style="display:none"><h2>🎒 Sua mala</h2><div id="lista"></div><p>Progresso: <b id="pct">0%</b></p></div>
+<div class="card"><h2>🌐 Ecossistema ASF</h2><p>Ganhe XP aqui e veja seu progresso no <a href="https://acarolmourad-commits.github.io/asf-ranking/">ASF Ranking</a>. Explore tudo no <a href="https://acarolmourad-commits.github.io/">Hub ASF</a>.</p></div>
+</main>
+<div class="xp">⭐ XP: <span id="xp">0</span></div>
+<footer>ASF — Associação de Surf Feminino · <a href="https://acarolmourad-commits.github.io/asf-app/">asf-app</a></footer>
+<script>
+const XP=()=>parseInt(localStorage.getItem('asf_xp')||'0');
+function addXP(n){localStorage.setItem('asf_xp',XP()+n);document.getElementById('xp').textContent=XP();}
+document.getElementById('xp').textContent=XP();
+const ITENS={base:['Prancha','Leash','Parafina','Protetor solar','Água 1L','Toalha','Biquíni/lycra'],treino:['Cronômetro','Lanche pós-treino','Caderno de treino → ASF Diário'],free:['Óculos de sol','Boné','Dinheiro pro acarajé 😋'],campeonato:['Licra de competição','Documento + inscrição','Lycra extra','Snacks','Carteirinha → ASF Clube'],trip:['Capa de prancha','Kit primeiros socorros','Leash reserva','Quilhas reserva','Checklist completo → ASF Viagens']};const EXTRA={dia:['Água 2L','Almoço leve','Protetor labial'],fds:['Roupas x3','Carregador','Lanterna'],['2h']:[]};window.gerar=()=>{const t=document.getElementById('t').value,d=document.getElementById('d').value;const cur=[...ITENS.base,...ITENS[t],...EXTRA[d]];document.getElementById('out').style.display='block';document.getElementById('lista').innerHTML=cur.map(x=>`<label style="display:block;margin:.3rem 0"><input type="checkbox" style="width:auto" onchange="ck()"> ${x}</label>`).join('');addXP(10);};window.ck=()=>{const boxes=document.querySelectorAll('#lista input');const d=[...boxes].filter(b=>b.checked).length;document.getElementById('pct').textContent=Math.round(d/boxes.length*100)+'%';if(d===boxes.length)addXP(15);};
+</script>
+</body>
+</html>
